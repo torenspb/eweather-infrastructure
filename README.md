@@ -43,11 +43,54 @@ Following actions can be performed in order to scale the service if application
 starts consuming more resources:
 - change EC2 instance type and increase desired amount of tasks
 ```
+--- a/variables.tf
++++ b/variables.tf
+@@ -12,7 +12,7 @@ variable "app_name" {
 
+ variable "ecs_instance_type" {
+   type        = string
+-  default     = "t3.micro"
++  default     = "t3.large"
+   description = "Type of EC2 instance used as ECS instance"
+ }
+
+@@ -36,6 +36,6 @@ variable "default_docker_image" {
+
+ variable "containers_amount" {
+   type        = number
+-  default     = 8
++  default     = 16
+   description = "Amount of desired ECS tasks to run"
+ }
 ```
 - increase number of EC2 instances and desired amount of tasks
 ```
+--- a/variables.tf
++++ b/variables.tf
+@@ -18,13 +18,13 @@ variable "ecs_instance_type" {
 
+ variable "min_ec2_amount" {
+   type        = number
+-  default     = 2
++  default     = 4
+   description = "Minimum amount of running EC2 instances"
+ }
+
+ variable "max_ec2_amount" {
+   type        = number
+-  default     = 2
++  default     = 4
+   description = "Maximum amount of running EC2 instances"
+ }
+
+@@ -36,6 +36,6 @@ variable "default_docker_image" {
+
+ variable "containers_amount" {
+   type        = number
+-  default     = 8
++  default     = 16
+   description = "Amount of desired ECS tasks to run"
+ }
 ```
 - make both previously described changes together
 

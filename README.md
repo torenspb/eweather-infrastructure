@@ -87,3 +87,8 @@ Following actions can be performed in order to scale the service if the applicat
  }
 ```
 - make both previously described changes together
+
+# Monitoring
+This code does not provision any custom AWS CloudFront metrics required for the application. However, metrics are automatically added for all provisioned services in AWS CloudWatch. It's recommended to monitor EC2 (e.g., `CPUUtilization`), ALB (e.g., `RequestCount`, `HTTPCode_Target_4XX_Count`) and ECS (`CPUUtilization`, `MemoryUtilization`) metrics to be sure the application works properly.  
+
+You can also configure an alarm for any of desired metrics if you wish to get notifications on alarm occurrence (remember to pre-configure SNS topic at first).
